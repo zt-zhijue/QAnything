@@ -369,7 +369,7 @@ async def upload_faqs(req: request):
 async def list_kbs(req: request):
     local_doc_qa: LocalDocQA = req.app.ctx.local_doc_qa
     user_id = safe_get(req, 'user_id')
-    user_info = safe_get(req, 'user_info', "1234")
+    user_info = str(safe_get(req, 'user_info', "1234"))
     passed, msg = check_user_id_and_user_info(user_id, user_info)
     if not passed:
         return sanic_json({"code": 2001, "msg": msg})
